@@ -1,0 +1,153 @@
+{
+    "metadata": {
+        "time_seconds": 5.323700526
+    },
+    "winner_probs": {
+        "Ding, Liren": 0.003076,
+        "Firouzja, Alireza": 0.0,
+        "Caruana, Fabiano": 0.0,
+        "Nepomniachtchi, Ian": 0.994508,
+        "Rapport, Richard": 0.0,
+        "Nakamura, Hikaru": 0.002416,
+        "Radjabov, Teimour": 0.0,
+        "Duda, Jan-Krzysztof": 0.0
+    },
+    "expected_points": {
+        "Ding, Liren": 7.606825,
+        "Firouzja, Alireza": 5.4525595,
+        "Caruana, Fabiano": 6.9536385,
+        "Nepomniachtchi, Ian": 9.5343335,
+        "Rapport, Richard": 6.009454,
+        "Nakamura, Hikaru": 7.5283675,
+        "Radjabov, Teimour": 7.0341035,
+        "Duda, Jan-Krzysztof": 5.8807185
+    },
+    "rank_matrix": {
+        "Ding, Liren": [
+            0.003076,
+            0.371725,
+            0.237137,
+            0.251611,
+            0.116586,
+            0.017738,
+            0.002127,
+            0.0
+        ],
+        "Firouzja, Alireza": [
+            0.0,
+            0.0,
+            0.0,
+            0.000165,
+            0.008725,
+            0.061065,
+            0.186709,
+            0.743336
+        ],
+        "Caruana, Fabiano": [
+            0.0,
+            0.049538,
+            0.23662,
+            0.212711,
+            0.39885,
+            0.084938,
+            0.016126,
+            0.001217
+        ],
+        "Nepomniachtchi, Ian": [
+            0.994508,
+            0.005492,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        "Rapport, Richard": [
+            0.0,
+            0.000542,
+            0.013433,
+            0.033455,
+            0.091601,
+            0.380888,
+            0.369014,
+            0.111067
+        ],
+        "Nakamura, Hikaru": [
+            0.002416,
+            0.438259,
+            0.204647,
+            0.223566,
+            0.10842,
+            0.019636,
+            0.003056,
+            0.0
+        ],
+        "Radjabov, Teimour": [
+            0.0,
+            0.133131,
+            0.299253,
+            0.250287,
+            0.220467,
+            0.079389,
+            0.016986,
+            0.000487
+        ],
+        "Duda, Jan-Krzysztof": [
+            0.0,
+            0.001313,
+            0.00891,
+            0.028205,
+            0.055351,
+            0.356346,
+            0.405982,
+            0.143893
+        ]
+    },
+    "game_probs": {
+        "13": {
+            "Nepomniachtchi, Ian|Rapport, Richard": [
+                0.252477,
+                0.508459,
+                0.239064
+            ],
+            "Nakamura, Hikaru|Duda, Jan-Krzysztof": [
+                0.362533,
+                0.458243,
+                0.179224
+            ],
+            "Firouzja, Alireza|Ding, Liren": [
+                0.213566,
+                0.485792,
+                0.300642
+            ],
+            "Radjabov, Teimour|Caruana, Fabiano": [
+                0.299136,
+                0.502256,
+                0.198608
+            ]
+        },
+        "14": {
+            "Rapport, Richard|Radjabov, Teimour": [
+                0.279897,
+                0.472527,
+                0.247576
+            ],
+            "Caruana, Fabiano|Firouzja, Alireza": [
+                0.258876,
+                0.490053,
+                0.251071
+            ],
+            "Ding, Liren|Nakamura, Hikaru": [
+                0.322392,
+                0.48179,
+                0.195818
+            ],
+            "Duda, Jan-Krzysztof|Nepomniachtchi, Ian": [
+                0.228245,
+                0.488256,
+                0.283499
+            ]
+        }
+    }
+}

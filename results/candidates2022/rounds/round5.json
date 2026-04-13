@@ -1,0 +1,329 @@
+{
+    "metadata": {
+        "time_seconds": 20.262324656
+    },
+    "winner_probs": {
+        "Ding, Liren": 0.086409,
+        "Firouzja, Alireza": 0.066466,
+        "Caruana, Fabiano": 0.157418,
+        "Nepomniachtchi, Ian": 0.333005,
+        "Rapport, Richard": 0.137643,
+        "Nakamura, Hikaru": 0.100818,
+        "Radjabov, Teimour": 0.051484,
+        "Duda, Jan-Krzysztof": 0.066757
+    },
+    "expected_points": {
+        "Ding, Liren": 6.8041905,
+        "Firouzja, Alireza": 6.7140435,
+        "Caruana, Fabiano": 7.309028,
+        "Nepomniachtchi, Ian": 7.968205,
+        "Rapport, Richard": 7.211786,
+        "Nakamura, Hikaru": 6.8529485,
+        "Radjabov, Teimour": 6.5079565,
+        "Duda, Jan-Krzysztof": 6.631842
+    },
+    "rank_matrix": {
+        "Ding, Liren": [
+            0.086409,
+            0.09978,
+            0.119674,
+            0.128219,
+            0.134281,
+            0.138279,
+            0.142887,
+            0.150471
+        ],
+        "Firouzja, Alireza": [
+            0.066466,
+            0.101833,
+            0.113979,
+            0.124151,
+            0.132989,
+            0.142726,
+            0.152185,
+            0.165671
+        ],
+        "Caruana, Fabiano": [
+            0.157418,
+            0.162724,
+            0.149984,
+            0.135699,
+            0.122233,
+            0.108156,
+            0.092576,
+            0.07121
+        ],
+        "Nepomniachtchi, Ian": [
+            0.333005,
+            0.191577,
+            0.142181,
+            0.109289,
+            0.085166,
+            0.064814,
+            0.046428,
+            0.02754
+        ],
+        "Rapport, Richard": [
+            0.137643,
+            0.159115,
+            0.144129,
+            0.136573,
+            0.126511,
+            0.115083,
+            0.100645,
+            0.080301
+        ],
+        "Nakamura, Hikaru": [
+            0.100818,
+            0.104013,
+            0.119808,
+            0.127729,
+            0.132408,
+            0.137052,
+            0.139124,
+            0.139048
+        ],
+        "Radjabov, Teimour": [
+            0.051484,
+            0.089407,
+            0.100917,
+            0.115645,
+            0.130905,
+            0.147526,
+            0.16749,
+            0.196626
+        ],
+        "Duda, Jan-Krzysztof": [
+            0.066757,
+            0.091551,
+            0.109328,
+            0.122695,
+            0.135507,
+            0.146364,
+            0.158665,
+            0.169133
+        ]
+    },
+    "game_probs": {
+        "5": {
+            "Caruana, Fabiano|Rapport, Richard": [
+                0.232871,
+                0.503536,
+                0.263593
+            ],
+            "Radjabov, Teimour|Ding, Liren": [
+                0.227937,
+                0.520115,
+                0.251948
+            ],
+            "Firouzja, Alireza|Duda, Jan-Krzysztof": [
+                0.310706,
+                0.508064,
+                0.18123
+            ],
+            "Nakamura, Hikaru|Nepomniachtchi, Ian": [
+                0.269539,
+                0.475814,
+                0.254647
+            ]
+        },
+        "6": {
+            "Radjabov, Teimour|Rapport, Richard": [
+                0.249721,
+                0.505408,
+                0.244871
+            ],
+            "Firouzja, Alireza|Caruana, Fabiano": [
+                0.294151,
+                0.506882,
+                0.198967
+            ],
+            "Nakamura, Hikaru|Ding, Liren": [
+                0.232238,
+                0.471183,
+                0.296579
+            ],
+            "Nepomniachtchi, Ian|Duda, Jan-Krzysztof": [
+                0.297369,
+                0.486598,
+                0.216033
+            ]
+        },
+        "7": {
+            "Rapport, Richard|Nepomniachtchi, Ian": [
+                0.291385,
+                0.489229,
+                0.219386
+            ],
+            "Duda, Jan-Krzysztof|Nakamura, Hikaru": [
+                0.260592,
+                0.498828,
+                0.24058
+            ],
+            "Ding, Liren|Firouzja, Alireza": [
+                0.287452,
+                0.471689,
+                0.240859
+            ],
+            "Caruana, Fabiano|Radjabov, Teimour": [
+                0.275321,
+                0.464775,
+                0.259904
+            ]
+        },
+        "8": {
+            "Rapport, Richard|Duda, Jan-Krzysztof": [
+                0.323794,
+                0.482123,
+                0.194083
+            ],
+            "Nepomniachtchi, Ian|Ding, Liren": [
+                0.23591,
+                0.467422,
+                0.296668
+            ],
+            "Nakamura, Hikaru|Caruana, Fabiano": [
+                0.289584,
+                0.465377,
+                0.245039
+            ],
+            "Firouzja, Alireza|Radjabov, Teimour": [
+                0.308047,
+                0.459193,
+                0.23276
+            ]
+        },
+        "9": {
+            "Firouzja, Alireza|Rapport, Richard": [
+                0.274713,
+                0.471484,
+                0.253803
+            ],
+            "Radjabov, Teimour|Nakamura, Hikaru": [
+                0.319539,
+                0.466313,
+                0.214148
+            ],
+            "Caruana, Fabiano|Nepomniachtchi, Ian": [
+                0.282909,
+                0.44638,
+                0.270711
+            ],
+            "Ding, Liren|Duda, Jan-Krzysztof": [
+                0.343774,
+                0.450896,
+                0.20533
+            ]
+        },
+        "10": {
+            "Rapport, Richard|Ding, Liren": [
+                0.259557,
+                0.472261,
+                0.268182
+            ],
+            "Duda, Jan-Krzysztof|Caruana, Fabiano": [
+                0.250731,
+                0.494071,
+                0.255198
+            ],
+            "Nepomniachtchi, Ian|Radjabov, Teimour": [
+                0.287664,
+                0.44376,
+                0.268576
+            ],
+            "Nakamura, Hikaru|Firouzja, Alireza": [
+                0.270893,
+                0.443164,
+                0.285943
+            ]
+        },
+        "11": {
+            "Nakamura, Hikaru|Rapport, Richard": [
+                0.261405,
+                0.441822,
+                0.296773
+            ],
+            "Firouzja, Alireza|Nepomniachtchi, Ian": [
+                0.315949,
+                0.442226,
+                0.241825
+            ],
+            "Radjabov, Teimour|Duda, Jan-Krzysztof": [
+                0.321995,
+                0.465087,
+                0.212918
+            ],
+            "Caruana, Fabiano|Ding, Liren": [
+                0.245007,
+                0.44425,
+                0.310743
+            ]
+        },
+        "12": {
+            "Rapport, Richard|Caruana, Fabiano": [
+                0.30911,
+                0.475825,
+                0.215065
+            ],
+            "Ding, Liren|Radjabov, Teimour": [
+                0.308608,
+                0.457744,
+                0.233648
+            ],
+            "Duda, Jan-Krzysztof|Firouzja, Alireza": [
+                0.226347,
+                0.489082,
+                0.284571
+            ],
+            "Nepomniachtchi, Ian|Nakamura, Hikaru": [
+                0.309282,
+                0.452097,
+                0.238621
+            ]
+        },
+        "13": {
+            "Nepomniachtchi, Ian|Rapport, Richard": [
+                0.256902,
+                0.4555,
+                0.287598
+            ],
+            "Nakamura, Hikaru|Duda, Jan-Krzysztof": [
+                0.312274,
+                0.451053,
+                0.236673
+            ],
+            "Firouzja, Alireza|Ding, Liren": [
+                0.260665,
+                0.472075,
+                0.26726
+            ],
+            "Radjabov, Teimour|Caruana, Fabiano": [
+                0.291456,
+                0.487862,
+                0.220682
+            ]
+        },
+        "14": {
+            "Rapport, Richard|Radjabov, Teimour": [
+                0.295059,
+                0.475298,
+                0.229643
+            ],
+            "Caruana, Fabiano|Firouzja, Alireza": [
+                0.259348,
+                0.468284,
+                0.272368
+            ],
+            "Ding, Liren|Nakamura, Hikaru": [
+                0.32257,
+                0.473178,
+                0.204252
+            ],
+            "Duda, Jan-Krzysztof|Nepomniachtchi, Ian": [
+                0.24219,
+                0.485628,
+                0.272182
+            ]
+        }
+    }
+}
