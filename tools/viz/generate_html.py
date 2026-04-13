@@ -138,6 +138,12 @@ def build_players(t_data: dict, aliases: dict[str, str]) -> list[dict]:
             "rating": p.get("rating"),
             "rapid_rating": p.get("rapid_rating"),
             "blitz_rating": p.get("blitz_rating"),
+            "history": p.get("history", []),
+            "games_played": p.get("games_played", []),
+            "rapid_history": p.get("rapid_history", []),
+            "rapid_games_played": p.get("rapid_games_played", []),
+            "blitz_history": p.get("blitz_history", []),
+            "blitz_games_played": p.get("blitz_games_played", []),
         }
         for i, p in enumerate(raw)
     ]
@@ -629,6 +635,12 @@ def assemble(
                 "rating": p.get("rating"),
                 "rapid_rating": p.get("rapid_rating"),
                 "blitz_rating": p.get("blitz_rating"),
+                "history": p.get("history", []),
+                "games_played": p.get("games_played", []),
+                "rapid_history": p.get("rapid_history", []),
+                "rapid_games_played": p.get("rapid_games_played", []),
+                "blitz_history": p.get("blitz_history", []),
+                "blitz_games_played": p.get("blitz_games_played", []),
             }
             for p in sorted(
                 t_data["players"], key=lambda x: x.get("rating", 0), reverse=True
@@ -992,6 +1004,12 @@ tbody tr:nth-child(even){background:rgba(120,180,255,.012)}
 .bar-inline{flex:1;height:14px;background:var(--rule);overflow:hidden;min-width:80px;border-radius:2px}
 .bar-inline .bar-fill{height:100%;transition:width .5s cubic-bezier(.22,.61,.36,1);border-radius:2px}
 .bar-fill{height:100%}
+
+/* ═══════════════ PLAYER HISTORY ═══════════════ */
+.player-detail-row td{padding:0 !important;border-bottom:1px solid var(--rule)}
+.player-history-wrap{padding:.8rem 1rem}
+.player-history-charts{display:flex;gap:1rem}
+.player-history-chart{flex:1;height:200px}
 
 /* ═══════════════ PLAYER TOGGLES ═══════════════ */
 .player-toggles{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem}
@@ -3714,9 +3732,10 @@ function renderTournamentPlayers(){
 
   const tb = document.getElementById('tbPlayers');
   tb.innerHTML = '';
-  sorted.forEach(p => {
+  sorted.forEach((p, idx) => {
     const playerInfo = P_MAP[p.name];
     const tr = document.createElement('tr');
+    tr.style.cursor = 'pointer';
     tr.innerHTML = `
       <td><div class="pcell">
         ${playerInfo ? `<span class="dot" style="background:${playerInfo.color}"></span>` : ''}
@@ -3727,6 +3746,74 @@ function renderTournamentPlayers(){
       <td style="color:var(--paper-2)">${p.rapid_rating??'—'}</td>
       <td style="color:var(--paper-2)">${p.blitz_rating??'—'}</td>`;
     tb.appendChild(tr);
+
+    // Expandable detail row
+    const detailTr = document.createElement('tr');
+    detailTr.className = 'player-detail-row';
+    detailTr.style.display = 'none';
+    const detailTd = document.createElement('td');
+    detailTd.colSpan = 5;
+    detailTd.innerHTML = `<div class="player-history-wrap">
+      <div class="player-history-charts">
+        <div class="player-history-chart"><canvas id="phClassical${idx}"></canvas></div>
+        <div class="player-history-chart"><canvas id="phRapid${idx}"></canvas></div>
+        <div class="player-history-chart"><canvas id="phBlitz${idx}"></canvas></div>
+      </div>
+    </div>`;
+    detailTr.appendChild(detailTd);
+    tb.appendChild(detailTr);
+
+    let chartBuilt = false;
+    tr.onclick = () => {
+      const vis = detailTr.style.display !== 'none';
+      detailTr.style.display = vis ? 'none' : '';
+      if (!vis && !chartBuilt){
+        chartBuilt = true;
+        buildPlayerHistoryCharts(p, playerInfo, idx);
+      }
+    };
+  });
+}
+
+function buildPlayerHistoryCharts(p, info, idx){
+  const n = p.history?.length ?? 0;
+  if (n === 0) return;
+  const labels = [];
+  for (let i = 0; i < n; i++) labels.push(i === n-1 ? 'Now' : `−${n-1-i}`);
+  const clr = info?.color ?? '#78b4ff';
+
+  const configs = [
+    {id:'phClassical'+idx, title:'Classical', elo:p.history, games:p.games_played},
+    {id:'phRapid'+idx,     title:'Rapid',     elo:p.rapid_history, games:p.rapid_games_played},
+    {id:'phBlitz'+idx,     title:'Blitz',     elo:p.blitz_history, games:p.blitz_games_played},
+  ];
+  configs.forEach(c => {
+    new Chart(document.getElementById(c.id), {
+      data:{
+        labels,
+        datasets:[
+          {type:'bar', label:'Games', data:c.games, backgroundColor:clr+'30', borderColor:clr+'60',
+           borderWidth:1, borderRadius:2, yAxisID:'yGames', order:2},
+          {type:'line', label:'Elo', data:c.elo, borderColor:clr, backgroundColor:clr+'33',
+           borderWidth:2, pointRadius:3, tension:.3, yAxisID:'yElo', order:1},
+        ]
+      },
+      options:{
+        responsive:true, maintainAspectRatio:false,
+        plugins:{
+          legend:{display:false},
+          title:{display:true, text:c.title, color:'#8494be', font:{size:12}}
+        },
+        scales:{
+          x:{grid:{color:'rgba(120,180,255,.08)'}},
+          yElo:{position:'left', grid:{color:'rgba(120,180,255,.08)'},
+            title:{display:true, text:'Elo', color:'#6a7ca3', font:{size:10}}},
+          yGames:{position:'right', grid:{drawOnChartArea:false}, beginAtZero:true,
+            title:{display:true, text:'Games', color:'#6a7ca3', font:{size:10}},
+            ticks:{stepSize:1}}
+        }
+      }
+    });
   });
 }
 </script>

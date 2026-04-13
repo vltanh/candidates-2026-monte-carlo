@@ -12,9 +12,9 @@ python tools/tuning/tune.py configs/default_hparams.jsonc data/candidates2024.js
 python tools/tuning/tune.py configs/default_hparams.jsonc data/candidates2022.jsonc data/candidates2024.jsonc --db db/tuning_22_24.db --trials 10000
 
 # Pareto front
-python tools/viz/pareto_front.py db/tuning_22.db --save results/pareto/tuning_22.png
-python tools/viz/pareto_front.py db/tuning_24.db --save results/pareto/tuning_24.png
-python tools/viz/pareto_front.py db/tuning_22_24.db --save results/pareto/tuning_22_24.png
+python tools/tuning/pareto_front.py db/tuning_22.db --save results/pareto/tuning_22.png
+python tools/tuning/pareto_front.py db/tuning_24.db --save results/pareto/tuning_24.png
+python tools/tuning/pareto_front.py db/tuning_22_24.db --save results/pareto/tuning_22_24.png
 
 # Evaluate
 python tools/tuning/evaluate.py configs/best_hparams_22_24.jsonc data/candidates2022.jsonc data/candidates2024.jsonc data/candidates2026.jsonc
