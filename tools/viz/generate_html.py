@@ -450,47 +450,16 @@ def compute_eliminated(
     if not uncertain:
         return {p: True for p in players}
 
-    # Phase 1b: pigeonhole — total points after all games = sum(scores) + n.
-    # The max over N players sharing that total is ≥ total/N,
-    # rounded up to the nearest half-point.
-    import math
-
-    total_final = sum(scores.values()) + n
-    pigeonhole = math.ceil(total_final / len(players) * 2) / 2
-    if pigeonhole > leader:
-        newly_elim = []
-        for p in list(uncertain):
-            if scores[p] + games_left[p] < pigeonhole:
-                can_win[p] = False
-                uncertain.remove(p)
-                newly_elim.append(p)
-        print(
-            f"    Phase 1b (pigeonhole): guaranteed top ≥ {pigeonhole}"
-            + (
-                f", {len(newly_elim)} eliminated — {', '.join(newly_elim)}"
-                if newly_elim
-                else ", 0 eliminated"
-            )
-        )
-
-        if not uncertain:
-            eliminated = {p: can_win[p] is not True for p in players}
-            total_elim = sum(1 for v in eliminated.values() if v)
-            print(
-                f"    Result: {total_elim} eliminated, {len(players)-total_elim} alive"
-            )
-            return eliminated, {}
-
-    # Phase 1c: per-game floor — for each remaining game, the max of the two
+    # Phase 1b: per-game floor — for each remaining game, the max of the two
     # players' post-game scores is at least min over {W,D,L} of max(w+dw, b+db).
-    guaranteed_top = max(leader, pigeonhole)
+    guaranteed_top = leader
     for w, b in remaining_games:
         sw, sb = scores[w], scores[b]
         g = min(max(sw + 1, sb), max(sw + 0.5, sb + 0.5), max(sw, sb + 1))
         if g > guaranteed_top:
             guaranteed_top = g
 
-    if guaranteed_top > max(leader, pigeonhole):
+    if guaranteed_top > leader:
         newly_elim = []
         for p in list(uncertain):
             if scores[p] + games_left[p] < guaranteed_top:
@@ -498,7 +467,7 @@ def compute_eliminated(
                 uncertain.remove(p)
                 newly_elim.append(p)
         print(
-            f"    Phase 1c (per-game): guaranteed top ≥ {guaranteed_top}"
+            f"    Phase 1b (per-game): guaranteed top ≥ {guaranteed_top}"
             + (
                 f", {len(newly_elim)} eliminated — {', '.join(newly_elim)}"
                 if newly_elim
