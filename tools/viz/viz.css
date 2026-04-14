@@ -417,7 +417,10 @@ section{margin-bottom:3.25rem}
   .card{padding:.75rem .8rem}
   .hdr h1{font-size:clamp(1.6rem,5vw,2.5rem)}
   .hdr .sub{font-size:.78rem}
-  .hdr .top-rule{font-size:.55rem;gap:.5rem}
+  .hdr .top-rule{font-size:.5rem;gap:.35rem;letter-spacing:.14em;padding:.45rem .1rem;flex-wrap:nowrap}
+  .hdr .top-rule .ornament{font-size:.85rem;letter-spacing:.2em;white-space:nowrap}
+  .hdr .top-rule > span:first-child,
+  .hdr .top-rule > span:last-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   table{font-size:.75rem}
   thead th{font-size:.5rem;padding:.3rem .2rem}
   tbody td{padding:.45rem .2rem}
@@ -904,17 +907,15 @@ details:nth-of-type(n+6){animation-delay:1.6s}
 .se-menu > div:hover{background:rgba(120,180,255,.1)}
 @media(max-width:560px){
   .se-controls{gap:.4rem}
-  .se-controls > *{flex:1 1 auto}
+  .se-controls > button.se-ctrl-btn{flex:1 1 100%;width:100%}
   .se-ctrl-btn{
     min-height:42px; padding:.5rem .65rem;
     font-size:.64rem; letter-spacing:.1em;
-    width:100%;
   }
-  .se-split{flex:1 1 100%}
-  .se-split-main{flex:1}
-  .se-ctrl-sub{
-    font-size:.52rem; padding-left:.4em;
-  }
+  .se-split{flex:1 1 100%;width:100%}
+  .se-split-main{flex:1 1 auto;width:auto}
+  .se-split-caret{flex:0 0 auto;width:auto;min-width:44px;padding:0 .8rem}
+  .se-ctrl-sub{font-size:.52rem;padding-left:.4em}
 }
 @media(max-width:380px){
   .se-ctrl-sub{display:none}
