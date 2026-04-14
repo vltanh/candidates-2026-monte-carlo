@@ -972,16 +972,16 @@ function _initScenarioExplorer(){
         '<li>Click a <span style="color:#4dd0e1">round label (R#)</span> to lock that prefix; Random draws then only resample the remainder.</li>' +
         '<li>Editing a pill <em>inside</em> the locked prefix turns the prefix hypothetical.</li>' +
         '<li>Use the <span style="color:var(--paper-2)">Random \u25be</span> dropdown to pick a target player, and toggle <span style="color:#ffee58">Sole 1st only</span> to require an outright winner.</li>' +
-        '<li><span style="color:var(--paper-2)">\u2713 Follow Truth</span> extends the breadcrumb using the actual played results from the current point onward.</li>' +
+        '<li><span style="color:var(--paper-2)">\u2713 Follow Truth</span> fills in the actual played results for the next round. Click again to advance another round.</li>' +
       '</ul>' +
     '</div>' +
-    '<div style="position:relative;height:36px;margin-bottom:1.5rem">' +
-      '<button class="show-more-btn" onclick="_seNav(-1)" style="font-size:.75rem;white-space:nowrap;position:absolute;left:0;top:0">\u21ba Reset</button>' +
-      '<button id="seFollowTruthBtn" class="show-more-btn" onclick="_seFollowTruth()" style="font-size:.75rem;white-space:nowrap;position:absolute;left:50%;top:0;transform:translateX(-50%)">\u2713 Follow Truth</button>' +
-      '<div style="position:absolute;right:0;top:0;display:inline-flex">' +
-        '<button id="seRandomBtn" class="show-more-btn" onclick="_seRandom()" style="font-size:.75rem;border-radius:4px 0 0 4px;border-right:1px solid rgba(120,180,255,.15);white-space:nowrap">\u27f3 Random: Any</button>' +
-        '<button class="show-more-btn" onclick="_seToggleRandomMenu()" style="font-size:.75rem;border-radius:0 4px 4px 0;padding:0 6px">\u25be</button>' +
-        '<div id="seRandomMenu" style="display:none;position:absolute;top:100%;right:0;margin-top:4px;background:rgba(15,22,40,0.97);border:1px solid rgba(120,180,255,.2);border-radius:4px;z-index:10;min-width:140px;padding:4px 0">' +
+    '<div class="se-controls">' +
+      '<button class="show-more-btn se-ctrl-btn" onclick="_seNav(-1)">\u21ba Reset</button>' +
+      '<button id="seFollowTruthBtn" class="show-more-btn se-ctrl-btn" onclick="_seFollowTruth()">\u2713 Follow Truth <span class="se-ctrl-sub">+1 round</span></button>' +
+      '<div class="se-split">' +
+        '<button id="seRandomBtn" class="show-more-btn se-ctrl-btn se-split-main" onclick="_seRandom()">\u27f3 Random: Any</button>' +
+        '<button class="show-more-btn se-ctrl-btn se-split-caret" onclick="_seToggleRandomMenu()" aria-label="Random target">\u25be</button>' +
+        '<div id="seRandomMenu" class="se-menu">' +
           '<div onclick="_seSetRandomTarget(null)" style="padding:5px 12px;cursor:pointer;font-family:\'JetBrains Mono\',monospace;font-size:.72rem;color:#78b4ff;white-space:nowrap" '+
             'onmouseenter="this.style.background=\'rgba(120,180,255,.1)\'" onmouseleave="this.style.background=\'none\'">' +
             'Any</div>' +
@@ -1084,24 +1084,68 @@ function _seBuildPastChain(){
 }
 function _seNav(d){
   _seNavDir = 'backward'; _seDfsWarning = ''; _seOrphaned = [];
-  _sePath = d < 0 ? [] : _sePath.slice(0,d);
-  // If truncation cuts into the locked prefix, clear the lock (user can re-lock a round).
+  if (d < 0 || d >= _sePath.length){
+    _sePath = d < 0 ? [] : _sePath.slice(0,d);
+    if (_seLockedDepth >= _sePath.length) _seLockedDepth = -1;
+    _seRenderAll();
+    return;
+  }
+  // Games within the same round commute (scores accumulate independent of order),
+  // so clicking Back at depth d should keep the OTHER round-R selections.
+  // Strategy: replay later same-round steps into the slot being vacated, then drop
+  // the clicked step and everything after.
+  const steps = [];
+  let n = _seTree;
+  for (let i = 0; i < _sePath.length; i++){
+    _seGenChildren(n);
+    if (!n.ch || !n.ch[_sePath[i]]) break;
+    const e = n.ch[_sePath[i]];
+    steps.push({gi:e.gi, k:e.k, round:_seGames[e.gi].round});
+    n = e.child;
+  }
+  const clickedRound = steps[d].round;
+  let endIdx = d;
+  while (endIdx + 1 < steps.length && steps[endIdx + 1].round === clickedRound) endIdx++;
+  const laterSameRound = steps.slice(d + 1, endIdx + 1);
+
+  const newPath = _sePath.slice(0, d);
+  let cur = _seTree;
+  for (let i = 0; i < newPath.length; i++){
+    _seGenChildren(cur);
+    cur = cur.ch[newPath[i]].child;
+  }
+  for (const s of laterSameRound){
+    _seGenChildren(cur);
+    if (!cur.ch) break;
+    let found = -1;
+    for (let ci = 0; ci < cur.ch.length; ci++){
+      if (cur.ch[ci].gi === s.gi && cur.ch[ci].k === s.k){ found = ci; break; }
+    }
+    if (found < 0) break;
+    newPath.push(found);
+    cur = cur.ch[found].child;
+  }
+  _sePath = newPath;
   if (_seLockedDepth >= _sePath.length) _seLockedDepth = -1;
   _seRenderAll();
 }
 function _seClick(ci){ _seNavDir = 'forward'; _seDfsWarning = ''; _seOrphaned = []; _sePath.push(ci); _seRenderAll(); }
 function _seFollowTruth(){
+  // Advance one round: fill actual results until the round number changes.
   _seNavDir = 'forward';
   _seDfsWarning = '';
   _seOrphaned = [];
   let n = _seGetFocused();
   let added = 0;
+  let startRound = null;
   while (!n.leaf){
     _seGenChildren(n);
     if (!n.ch || !n.ch.length) break;
     const gi0 = n.ch[0].gi;
     const g = _seGames[gi0];
     if (g.actual === null) break;  // no actual result from here
+    if (startRound === null) startRound = g.round;
+    else if (g.round !== startRound) break;
     const targetK = ['W','D','L'][g.actual];
     let found = false;
     for (let i = 0; i < n.ch.length; i++){
@@ -1115,10 +1159,7 @@ function _seFollowTruth(){
     }
     if (!found) break;
   }
-  if (added === 0){
-    // No actual results to follow from here
-    return;
-  }
+  if (added === 0) return;
   _seRenderAll();
 }
 function _seSetRandomTarget(key){
@@ -1490,7 +1531,9 @@ function _seToggleHowTo(){
 }
 function _seToggleRandomMenu(){
   const menu = document.getElementById('seRandomMenu');
-  if (menu) menu.style.display = menu.style.display === 'none' ? '' : 'none';
+  if (!menu) return;
+  const open = menu.style.display === 'block';
+  menu.style.display = open ? 'none' : 'block';
 }
 
 /* ── breadcrumb inline editing ── */

@@ -1,4 +1,7 @@
 {
+  "name": "FIDE Candidates",
+  "year": 2026,
+  "section": "Women",
   "gpr": 4,
   "tiebreak": "fide2026",
   "players": [
@@ -169,10 +172,10 @@
     { "white": 35006916, "black": 8603642, "round": 12, "result": "0-1" }, // Divya vs Tan Zhongyi
     { "white": 13708694, "black": 14109336, "round": 12, "result": "1-0" }, // Bibisara vs Kateryna
     // Round 13
-    { "white": 13708694, "black": 14111330, "round": 13 }, // Bibisara vs Myzychuk
-    { "white": 14109336, "black": 35006916, "round": 13 }, // Kateryna vs Divya
-    { "white": 8603642, "black": 5091756, "round": 13 }, // Tan Zhongyi vs Vaishali
-    { "white": 8608059, "black": 4147103, "round": 13 }, // Zhu Jiner vs Goryachkina
+    { "white": 13708694, "black": 14111330, "round": 13, "result": "1-0" }, // Bibisara vs Myzychuk
+    { "white": 14109336, "black": 35006916, "round": 13, "result": "1-0" }, // Kateryna vs Divya
+    { "white": 8603642, "black": 5091756, "round": 13, "result": "1/2-1/2" }, // Tan Zhongyi vs Vaishali
+    { "white": 8608059, "black": 4147103, "round": 13, "result": "0-1" }, // Zhu Jiner vs Goryachkina
     // Round 14
     { "white": 14111330, "black": 8608059, "round": 14 }, // Myzychuk vs Zhu Jiner
     { "white": 4147103, "black": 8603642, "round": 14 }, // Goryachkina vs Tan Zhongyi

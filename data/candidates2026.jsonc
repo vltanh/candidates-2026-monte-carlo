@@ -1,4 +1,7 @@
 {
+  "name": "FIDE Candidates",
+  "year": 2026,
+  "section": "Open",
   "gpr": 4,
   "tiebreak": "fide2026",
   "players": [
@@ -169,10 +172,10 @@
     { "white": 14205483, "black": 2016192, "round": 12, "result": "1/2-1/2" }, // Sindarov vs Hikaru
     { "white": 8603405, "black": 24116068, "round": 12, "result": "1/2-1/2" }, // Wei Yi vs Anish
     // Round 13
-    { "white": 8603405, "black": 24175439, "round": 13 }, // Wei Yi vs Esipenko
-    { "white": 24116068, "black": 14205483, "round": 13 }, // Anish vs Sindarov
-    { "white": 2016192, "black": 24651516, "round": 13 }, // Hikaru vs Bluebaum
-    { "white": 2020009, "black": 25059530, "round": 13 }, // Fabi vs Pragg
+    { "white": 8603405, "black": 24175439, "round": 13, "result": "1-0" }, // Wei Yi vs Esipenko
+    { "white": 24116068, "black": 14205483, "round": 13, "result": "1/2-1/2" }, // Anish vs Sindarov
+    { "white": 2016192, "black": 24651516, "round": 13, "result": "1/2-1/2" }, // Hikaru vs Bluebaum
+    { "white": 2020009, "black": 25059530, "round": 13, "result": "1/2-1/2" }, // Fabi vs Pragg
     // Round 14
     { "white": 24175439, "black": 2020009, "round": 14 }, // Esipenko vs Fabi
     { "white": 25059530, "black": 2016192, "round": 14 }, // Pragg vs Hikaru
