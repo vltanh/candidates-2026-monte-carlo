@@ -1,4 +1,7 @@
 {
+  "name": "UzChess Cup",
+  "year": 2025,
+  "section": "Masters",
   "gpr": 5,
   "tiebreak": "shared",
   "players": [

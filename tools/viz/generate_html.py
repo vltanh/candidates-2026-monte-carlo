@@ -726,8 +726,13 @@ def assemble(
 
 
 def html_template() -> str:
-    template_path = Path(__file__).parent / "template.html"
-    return template_path.read_text(encoding="utf-8")
+    base = Path(__file__).parent
+    html = (base / "template.html").read_text(encoding="utf-8")
+    css = (base / "viz.css").read_text(encoding="utf-8")
+    js = (base / "viz.js").read_text(encoding="utf-8")
+    return html.replace("/*__INJECT_CSS__*/", css, 1).replace(
+        "/*__INJECT_JS__*/", js, 1
+    )
 
 
 # ── CLI ───────────────────────────────────────────────────────────────────────
