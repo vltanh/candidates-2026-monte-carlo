@@ -1,0 +1,108 @@
+{
+    "metadata": {
+        "time_seconds": 0.086432571
+    },
+    "winner_probs": {
+        "Zhu, Jiner": 0.0,
+        "Tan, Zhongyi": 0.0,
+        "Goryachkina, Aleksandra": 0.0,
+        "Muzychuk, Anna": 0.0,
+        "Assaubayeva, Bibisara": 0.0,
+        "Divya Deshmukh": 0.0,
+        "Lagno, Kateryna": 0.0,
+        "Vaishali, Rameshbabu": 1.0
+    },
+    "expected_points": {
+        "Zhu, Jiner": 7.5,
+        "Tan, Zhongyi": 5.5,
+        "Goryachkina, Aleksandra": 7.5,
+        "Muzychuk, Anna": 7.0,
+        "Assaubayeva, Bibisara": 8.0,
+        "Divya Deshmukh": 5.5,
+        "Lagno, Kateryna": 6.5,
+        "Vaishali, Rameshbabu": 8.5
+    },
+    "rank_matrix": {
+        "Zhu, Jiner": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        "Tan, Zhongyi": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+        ],
+        "Goryachkina, Aleksandra": [
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        "Muzychuk, Anna": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        "Assaubayeva, Bibisara": [
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        "Divya Deshmukh": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0
+        ],
+        "Lagno, Kateryna": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+        ],
+        "Vaishali, Rameshbabu": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ]
+    },
+    "game_probs": {}
+}

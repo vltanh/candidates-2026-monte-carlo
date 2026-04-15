@@ -177,9 +177,9 @@
     { "white": 2016192, "black": 24651516, "round": 13, "result": "1/2-1/2" }, // Hikaru vs Bluebaum
     { "white": 2020009, "black": 25059530, "round": 13, "result": "1/2-1/2" }, // Fabi vs Pragg
     // Round 14
-    { "white": 24175439, "black": 2020009, "round": 14 }, // Esipenko vs Fabi
-    { "white": 25059530, "black": 2016192, "round": 14 }, // Pragg vs Hikaru
-    { "white": 24651516, "black": 24116068, "round": 14 }, // Bluebaum vs Anish
-    { "white": 14205483, "black": 8603405, "round": 14 } // Sindarov vs Wei Yi
+    { "white": 24175439, "black": 2020009, "round": 14, "result": "0-1" }, // Esipenko vs Fabi
+    { "white": 25059530, "black": 2016192, "round": 14, "result": "1/2-1/2" }, // Pragg vs Hikaru
+    { "white": 24651516, "black": 24116068, "round": 14, "result": "0-1" }, // Bluebaum vs Anish
+    { "white": 14205483, "black": 8603405, "round": 14, "result": "1/2-1/2" } // Sindarov vs Wei Yi
   ]
 }

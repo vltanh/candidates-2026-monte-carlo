@@ -177,9 +177,9 @@
     { "white": 8603642, "black": 5091756, "round": 13, "result": "1/2-1/2" }, // Tan Zhongyi vs Vaishali
     { "white": 8608059, "black": 4147103, "round": 13, "result": "0-1" }, // Zhu Jiner vs Goryachkina
     // Round 14
-    { "white": 14111330, "black": 8608059, "round": 14 }, // Myzychuk vs Zhu Jiner
-    { "white": 4147103, "black": 8603642, "round": 14 }, // Goryachkina vs Tan Zhongyi
-    { "white": 5091756, "black": 14109336, "round": 14 }, // Vaishali vs Kateryna
-    { "white": 35006916, "black": 13708694, "round": 14 } // Divya vs Bibisara
+    { "white": 14111330, "black": 8608059, "round": 14, "result": "1/2-1/2" }, // Myzychuk vs Zhu Jiner
+    { "white": 4147103, "black": 8603642, "round": 14, "result": "1-0" }, // Goryachkina vs Tan Zhongyi
+    { "white": 5091756, "black": 14109336, "round": 14, "result": "1-0" }, // Vaishali vs Kateryna
+    { "white": 35006916, "black": 13708694, "round": 14, "result": "1/2-1/2" } // Divya vs Bibisara
   ]
 }
